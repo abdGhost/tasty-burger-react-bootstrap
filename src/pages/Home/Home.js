@@ -1,5 +1,21 @@
 import React from "react";
 
-export default function Home() {
-  return <div>Home</div>;
+import Layout from "../../components/Layouts/Layout.js";
+import "../../styles/HomeStyles.css";
+
+import "../../styles/HeaderStyles.css";
+
+import Section1 from "./Section1.js";
+
+function Home() {
+  return (
+    <>
+      <Layout>
+        {/* Home Section Hero Banner */}
+        <Section1 />
+      </Layout>
+    </>
+  );
 }
+
+export default Home;
