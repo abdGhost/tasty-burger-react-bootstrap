@@ -1,5 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import Image1 from "../../assets/menu/burger-11.jpg";
 import Image2 from "../../assets/menu/burger-12.jpg";
@@ -79,14 +80,32 @@ const mockData = [
   // Add more mock data objects as needed
 ];
 
+// Ratin Logical Data
+const renderRatingIcons = (rating) => {
+  const stars = [];
+
+  for (let i = 0; i < 5; i++) {
+    if (rating > 0.5) {
+      stars.push(<i key={i} className="bi bi-star-fill"></i>);
+      rating--;
+    } else if (rating > 0 && rating < 1) {
+      stars.push(<i key={i} className="bi bi-star-half"></i>);
+      rating--;
+    } else {
+      stars.push(<i key={`empty${i}`} className="bi bi-star"></i>);
+    }
+  }
+  return stars;
+};
+
 export const Section3 = () => {
   return (
     <section className="menu_section">
       <Container>
         <Row>
-          <Col lg={{ span: 8, offset: 2 }}>
+          <Col lg={{ span: 8, offset: 2 }} className="text-center mb-5">
             <h2>OUR CRAZY BURGERS</h2>
-            <p>
+            <p className="para">
               simply dummy text of the printing and typesetting industry. Lorem
               Ipsum has been the industry's standard dummy text ever since the
               1500s, when an unknown printer took a galley of type and scrambled
@@ -104,9 +123,31 @@ export const Section3 = () => {
               title={cardData.title}
               paragraph={cardData.paragraph}
               price={cardData.price}
-              // renderRatingIcons = {renderRatingIcons}
+              renderRatingIcons={renderRatingIcons}
             />
           ))}
+        </Row>
+
+        <Row className="pt-5">
+          <Col sm={6} lg={5}>
+            <div className="ads_box ads_img_1 mb-5 mb-md-0">
+              <h4>GET YOUR FREE</h4>
+              <h5>CHEESE FRIES</h5>
+              <Link to="/" className="btn btn_red px-4 rounded-0">
+                Learn More
+              </Link>
+            </div>
+          </Col>
+
+          <Col sm={6} lg={7}>
+            <div className="ads_box ads_img_2 mb-5 mb-md-0">
+              <h4>GET YOUR FREE</h4>
+              <h5>CHEESE FRIES</h5>
+              <Link to="/" className="btn btn_red px-4 rounded-0">
+                Learn More
+              </Link>
+            </div>
+          </Col>
         </Row>
       </Container>
     </section>
